@@ -1,0 +1,17 @@
+#This is my Makefile for simpleChiComp.c
+CC=gcc
+
+CFLAG=-Wall -g -march=i386
+MYLIBDIR=/Users/mt/Documents/ccr_home/mylib
+MYINCDIR=/Users/mt/Documents/ccr_home/mylib/include
+
+OBJ=${MYLIBDIR}/stat_functions.o
+
+simpleChiComp.exe: simpleChiComp.o ${OBJ}
+	${CC}  ${CFLAG}  -L${MYLIBDIR} simpleChiComp.o ${OBJ} -o simpleChiComp.exe -lm
+
+simpleChiComp.o: simpleChiComp.c
+	${CC}  ${CFLAG} -c -std=gnu99 -I${MYINCDIR} simpleChiComp.c -o simpleChiComp.o
+
+stat_functions.o: stat_functions.c
+	${CC} ${CFLAGS} -c ${MYLIBDIR}/stat_functions.c -I${MYINCDIR} -o ${MYLIBDIR}/stat_functions.o
